@@ -1,4 +1,4 @@
-//function for iterative binary search in an integer array
+//functions for iterative binary search in an integer array
 
 #include<iostream>
 
@@ -9,6 +9,33 @@
 int binarySearch(int arr[], int firstIndex, int lastIndex, int value) 
 { 
     int tempIndex;
+
+    while (firstIndex <= lastIndex)
+    { 
+        tempIndex = firstIndex + (lastIndex - firstIndex) / 2;
+
+        if (arr[tempIndex] == value) 
+        {
+            return tempIndex;
+        }     
+        else if (arr[tempIndex] < value) 
+        {
+            firstIndex = tempIndex + 1;
+        } 
+        else
+        {
+            lastIndex = tempIndex - 1; 
+        }
+    } 
+
+    return -1; 
+}
+
+int binarySearch2(int arr[], int firstIndex, int lastIndex, int value, int tempIndex = 0) 
+{ 
+
+    if(value < arr[firstIndex] or value > arr[lastIndex]) return -1;
+
 
     while (firstIndex <= lastIndex)
     { 
@@ -48,6 +75,18 @@ int main ()
     std::cout << "the element " << vartoSearch << " is NOT found" << std::endl;
     }
     
+    std::cout << "--------------" << "\n";
 
+    vartoSearch = 17;
+    var = binarySearch2(array, 0, 14, vartoSearch);
+
+    if(var != -1)
+    {
+    std::cout <<"at least one occurence of element " << 
+    vartoSearch <<" is found at position " << var << std::endl;
+    }
+    else
+    std::cout << "the element " << vartoSearch << " is NOT found" << std::endl;
+     
     return 0;
 }
