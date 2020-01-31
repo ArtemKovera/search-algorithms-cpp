@@ -9,8 +9,11 @@
 int interpolationSearch (int arr[], int firstIndex, int lastIndex, int value)
 {
     int midleIndex;
+
+    if (value < arr[firstIndex] or value > arr[lastIndex]) return -1;
+
      
-    while (firstIndex <= lastIndex && value >= arr[firstIndex] && value <= arr[lastIndex])
+    while (firstIndex <= lastIndex)
      { 
         if (firstIndex == lastIndex) 
         { 
@@ -50,7 +53,7 @@ int main ()
 {
     int array [] {1, 3, 5, 7, 8, 10, 11, 13, 14, 17, 19, 23, 25, 27, 30};
 
-    int vartoSearch = 11;
+    int vartoSearch = 17;
     int var = interpolationSearch(array, 0, 14, vartoSearch);
 
     if(var != -1)
